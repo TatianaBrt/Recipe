@@ -3,27 +3,32 @@ import video from './food.mp4';
 import './App.css';
 import MyRecipesComponent from './MyRecipesComponent';
 
+
 function App() {
-  const MY_ID="ef3d3949";
-  const MY_KEY="f9f79987232baca4f925698b2baaa0f18";
 
+  const API_ID="00947413";
+  const API_KEY="b1f1ca4b77c93d3d86ee32ee3f3af277	";
+  
+  
   const [mySearch,setMySearch]=useState("");
-  const [myRecipes,setMyRecipes]=useState([]);
+  const [myRecipes, setMyRecipes]=useState([]);
+  const [wordSubmitted,setWordSubmitted]=useState("avocado");
 
-  useEffect(()=>{
-    getKey();
-    
-  },[])
-  const getKey=async()=>{
-  const response=await fetch(`https://api.edamam.com/api/recipes/v2?type=public&q=avocado&app_id=${MY_ID}&app_key=${MY_KEY}`);
-  console.log(response)
-  const data=await response.json();
-  setMyRecipes(data.hits);
-  }
+  useEffect(async()=>{
+    const response=await fetch(`https://api.edamam.com/api/recipes/v2?type=public&q=${wordSubmitted}&app_id=${API_ID}&app_key=${API_KEY}`);
+    const data= await response.json();
+    setMyRecipes(data.hits);
+    },[wordSubmitted])
 
   const myRecipeSearch=(e)=>{
   setMySearch(e.target.value)
   }
+
+  const finalSearch=(e)=>{
+    e.preventDefault();
+    setWordSubmitted(mySearch);
+  }
+
   return(
   <div className="App">
   <div className="container">
@@ -34,7 +39,7 @@ function App() {
   </div>
 
 <div className='container'>
-<form>
+<form onSubmit={finalSearch}>
   <input className='search' placeholder='search' onChange={myRecipeSearch} value={mySearch}>
   </input>
 </form>

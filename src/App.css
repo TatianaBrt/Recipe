@@ -49,3 +49,24 @@ video {
         box-shadow: inset 0px 0px 0px 4px #ddd6e8;
 
 }
+ul {
+
+  list-style: none; 
+
+  padding: 0;
+
+  text-shadow: 0 1px 0 rgba(255,255,255,.5);
+
+}
+
+li {
+
+  display: block;
+
+  padding: .4em .4em .4em .8em;
+
+  margin: .5em 0 .5em 2.5em;
+
+  background: #ddd6e8;
+
+}
