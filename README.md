@@ -9,7 +9,12 @@ This project implements search and API:
 * API of recipe
 * Search recipe (enter any product,you can see recipes where use this product)
 
-
-
 ## Preview
+
+https://github.com/TatianaBrt/Recipe/assets/115479875/1f070268-3fcd-4518-99ba-9436aaf0c15c
+
+
+
+
+
 
