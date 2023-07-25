@@ -45,7 +45,7 @@ function App() {
 </form>
 </div>
 <div className='container'>
-<button>
+<button onClick={finalSearch}>
   <img src="https://img.icons8.com/fluency/48/000000/fry.png" className='icons' alt="icon"/>
 </button>
 </div>
