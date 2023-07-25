@@ -14,11 +14,17 @@ function App() {
   const [myRecipes, setMyRecipes]=useState([]);
   const [wordSubmitted,setWordSubmitted]=useState("avocado");
 
-  useEffect(async()=>{
+  useEffect(()=>{
+    const getAdvance=async()=>{
     const response=await fetch(`https://api.edamam.com/api/recipes/v2?type=public&q=${wordSubmitted}&app_id=${API_ID}&app_key=${API_KEY}`);
+   
     const data= await response.json();
-    setMyRecipes(data.hits);
+    console.log(data);
+       setMyRecipes(data.hits);
+    }
+    getAdvance()
     },[wordSubmitted])
+
 
   const myRecipeSearch=(e)=>{
   setMySearch(e.target.value)
@@ -45,17 +51,20 @@ function App() {
 </form>
 </div>
 <div className='container'>
-<button>
+<button onClick={finalSearch}>
   <img src="https://img.icons8.com/fluency/48/000000/fry.png" className='icons' alt="icon"/>
 </button>
 </div>
 
 <div>
-{myRecipes.map(element=>(
+{myRecipes.map((element,index)=>(
   <MyRecipesComponent
+  key={index}
   label={element.recipe.label}
   image={element.recipe.image}
   calories={element.recipe.calories}
+  ingredients={element.recipe.ingredientLines}
+
   />
   
 ))}
